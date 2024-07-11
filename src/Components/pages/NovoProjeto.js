@@ -1,17 +1,15 @@
 import React from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ProjetoForm from "../project/ProjetoForm";
 import styles from "../layout/NovoProjeto.module.css";
 
 function NovoProjeto() {
-  const navigate =  useNavigate();
+  const navigate = useNavigate();
 
   function createPost(project) {
-   
     // initialize cost and services
-
-    project.cost = 0
-    project.services = []
+    project.cost = 0;
+    project.services = [];
 
     fetch("http://localhost:5000/projects", {
       method: 'POST',
@@ -22,7 +20,7 @@ function NovoProjeto() {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        navigate("/projetos", {message:"projeto criado com sucesso"}); 
+        navigate("/projetos", { state: { message: "Projeto criado com sucesso!" } });
       })
       .catch((err) => console.log(err));
   }

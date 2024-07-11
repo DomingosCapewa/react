@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import Input from "../form/Input";
 import Select from "../form/Select";
@@ -8,7 +9,7 @@ import styles from "../project/ProjetoForm.module.css";
 function ProjetoForm({ handleSubmit, btnText, projectData }) {
   const [categories, setCategories] = useState([]);
   const [project, setProject] = useState(projectData || {})
-  var projectName;
+ 
 
   useEffect(() => {
     fetch("http://localhost:5000/categories", {
@@ -17,11 +18,11 @@ function ProjetoForm({ handleSubmit, btnText, projectData }) {
         "Content-Type": "application/json"
       }
     })
-      .then((resp) => resp.json())
-      .then((data) => {
+      .then((resp) => resp.json()) // Processa a resposta como JSON
+      .then((data) => {  //Trata os dados da resposta
         setCategories(data)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err)); // Trata erros na requisição
   }, [])
 
   const submit = (e) => {
@@ -34,9 +35,9 @@ function ProjetoForm({ handleSubmit, btnText, projectData }) {
   }
 
   function handleCategory(e) {
-    setProject({ ...project, [e.target.name]: projectName, category: {
+    setProject({ ...project, category: {
         id: e.target.value,
-        name: e.target.options[e.target.selectedIndex], 
+        name: e.target.options[e.target.selectedIndex].text, 
     },
    })
   }
@@ -50,7 +51,7 @@ function ProjetoForm({ handleSubmit, btnText, projectData }) {
         placeholder="Insira o nome do projeto"
         handleOnChange={handleOnChange}
         value={project.name}
-        projectName= {project.name}
+        projectName= {project.name ? project.budget : ''}
       />
       <div>
         <Input
@@ -59,7 +60,7 @@ function ProjetoForm({ handleSubmit, btnText, projectData }) {
           name="budget"
           placeholder="Qual será o orçamento total?"
           handleOnChange={handleOnChange}
-          value={project.budget}
+          value={project.budget ? project.budget : ''}
         />
       </div>
       <div>
