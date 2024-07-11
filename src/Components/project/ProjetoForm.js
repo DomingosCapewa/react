@@ -1,15 +1,12 @@
-
 import React, { useEffect, useState } from "react";
 import Input from "../form/Input";
 import Select from "../form/Select";
 import SubmitButton from "../form/SubmitButton";
 import styles from "../project/ProjetoForm.module.css";
 
-
 function ProjetoForm({ handleSubmit, btnText, projectData }) {
   const [categories, setCategories] = useState([]);
-  const [project, setProject] = useState(projectData || {})
- 
+  const [project, setProject] = useState(projectData || { name: '', budget: '', category: { id: '', name: '' } });
 
   useEffect(() => {
     fetch("http://localhost:5000/categories", {
@@ -18,28 +15,26 @@ function ProjetoForm({ handleSubmit, btnText, projectData }) {
         "Content-Type": "application/json"
       }
     })
-      .then((resp) => resp.json()) // Processa a resposta como JSON
-      .then((data) => {  //Trata os dados da resposta
-        setCategories(data)
+      .then((resp) => resp.json())
+      .then((data) => {
+        setCategories(data);
       })
-      .catch((err) => console.log(err)); // Trata erros na requisição
-  }, [])
+      .catch((err) => console.log(err));
+  }, []);
 
   const submit = (e) => {
-    e.preventDefault()
-    handleSubmit(project)
+    e.preventDefault();
+    handleSubmit(project);
   }
 
   function handleOnChange(e) {
-    setProject({ ...project, [e.target.name]: e.target.value })
+    setProject({ ...project, [e.target.name]: e.target.value });
   }
 
   function handleCategory(e) {
-    setProject({ ...project, category: {
-        id: e.target.value,
-        name: e.target.options[e.target.selectedIndex].text, 
-    },
-   })
+    const categoryId = e.target.value;
+    const categoryName = e.target.options[e.target.selectedIndex].text;
+    setProject({ ...project, category: { id: categoryId, name: categoryName } });
   }
 
   return (
@@ -51,7 +46,6 @@ function ProjetoForm({ handleSubmit, btnText, projectData }) {
         placeholder="Insira o nome do projeto"
         handleOnChange={handleOnChange}
         value={project.name}
-        projectName= {project.name ? project.budget : ''}
       />
       <div>
         <Input
@@ -60,7 +54,7 @@ function ProjetoForm({ handleSubmit, btnText, projectData }) {
           name="budget"
           placeholder="Qual será o orçamento total?"
           handleOnChange={handleOnChange}
-          value={project.budget ? project.budget : ''}
+          value={project.budget}
         />
       </div>
       <div>
@@ -69,7 +63,7 @@ function ProjetoForm({ handleSubmit, btnText, projectData }) {
           text="Selecione a categoria"
           options={categories}
           handleOnChange={handleCategory}
-          value={project.category ? project.category.id : ''}
+          value={project.category.id}
         />
       </div>
       <div>
