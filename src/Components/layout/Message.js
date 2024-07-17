@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from './Message.module.css';
 
 function Message({ type, msg }) {
-    const [visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState(false); //função para atualizar o estado "visible"
 
     useEffect(() => {
         if (!msg) {
