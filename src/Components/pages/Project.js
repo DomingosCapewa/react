@@ -10,6 +10,7 @@ function Project () {
     const { id } = useParams()
     const [project, setProject] = useState([])
     const [showProjetoForm, setShowProjetoForm] = useState(false)
+    const [showServiceForm, setShowServiceForm] = useState(false)
     const [message, setMessage] = useState()
     const [type, setType] = useState()
     useEffect(() => {
@@ -56,6 +57,9 @@ if(project.budget < project.cost) {
     function toggleProjetoForm() {
        setShowProjetoForm(!showProjetoForm)
     }
+    function toggleServiceForm() {
+        setShowServiceForm(!showServiceForm)
+     }
 
     return (
         <>
@@ -85,6 +89,10 @@ if(project.budget < project.cost) {
                               </div>
                                 
                             )}
+                        </div>
+                        <div className={styles.service_form_container}>
+                          <h2>Adicione um serviço</h2>
+                          <button className={styles.btn} onClick={toggleServiceForm}>{!showServiceForm ? "Adicionar serviço" : "Fechar"}</button>
                         </div>
                     </Container> 
                 </div>
