@@ -4,12 +4,14 @@ import { useState, useEffect } from "react"
 import Loading from "../layout/Loading"
 import Container from "../layout/Container"
 import ProjetoForm from "../project/ProjetoForm"
+import Message from "../layout/Message"
 
 function Project () {
     const { id } = useParams()
     const [project, setProject] = useState([])
     const [showProjetoForm, setShowProjetoForm] = useState(false)
-
+    const [message, setMessage] = useState()
+    const [type, setType] = useState()
     useEffect(() => {
         setTimeout(() => {
             fetch(`http://localhost:5000/projects/${id}`, {
@@ -29,9 +31,11 @@ function Project () {
     function editPost(project) {
 //
 if(project.budget < project.cost) {
-    //mensagem
+    setMessage("O orçamento não pode ser menor do que o custo do projeto")
+    setType("error")
+    return false
 }
-    fetch(`htto://localhost:5000/projects/${project.id}`, {
+    fetch(`http://localhost:5000/projects/${project.id}`, {
         method: "PATCH",
         headers: {
            "Content-Type": "application/json" 
@@ -42,10 +46,12 @@ if(project.budget < project.cost) {
         .then((data) => {
             setProject(data)
             setShowProjetoForm(false)
-            //mensagem
+            setMessage("Projeto atualizado!")
+            setType('success')
         })
-        .catch(err => console.log(err))
-    }
+        .catch((err) => console.log(err))
+        setMessage("") 
+    } 
 
     function toggleProjetoForm() {
        setShowProjetoForm(!showProjetoForm)
@@ -56,6 +62,7 @@ if(project.budget < project.cost) {
             {project.name ? (
                 <div className={styles.project_details}>
                     <Container customClass="column">
+                        {message && <Message type={type} msg={message} />}
                         <div className={styles.details_container}>
                             <h1>Projeto: {project.name}</h1>
                             <button className={styles.btn} onClick={toggleProjetoForm}>{!showProjetoForm ? "Editar projeto" : "Fechar"}</button>
@@ -74,7 +81,7 @@ if(project.budget < project.cost) {
                                 </div>
                             ) : (
                               <div className={styles.project_info}>
-                                <ProjetoForm handleSubmit={editPost} btnText="Concluir edição" projectDta={project}/>
+                                <ProjetoForm handleSubmit={editPost} btnText="Concluir edição" projectData={project}/>
                               </div>
                                 
                             )}

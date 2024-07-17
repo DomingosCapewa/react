@@ -2,11 +2,11 @@
   "projects": [
     {
       "id": "395f",
-      "name": "Teste 2",
-      "budget": "111",
+      "name": "Teste ",
+      "budget": "1113",
       "category": {
-        "id": "1",
-        "name": "Infra"
+        "id": "4",
+        "name": "Planejamento"
       },
       "cost": 0,
       "services": []
