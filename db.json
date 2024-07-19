@@ -8,8 +8,105 @@
         "id": "4",
         "name": "Planejamento"
       },
-      "cost": 0,
-      "services": []
+      "cost": 242,
+      "services": [
+        {
+          "name": "4443w",
+          "cost": "2",
+          "description": "eed",
+          "id": "e57f53de-0dab-4757-bbee-46be535d79b9"
+        },
+        {
+          "name": "wwwww",
+          "cost": "11",
+          "description": "WS",
+          "id": "c63eb74f-234e-474f-889f-1ebe678a1c39"
+        },
+        {
+          "name": "wwwww",
+          "cost": "11",
+          "description": "eeq",
+          "id": "4b0df09b-f507-46b3-b2ac-de7b45b92e0a"
+        },
+        {
+          "name": "meu novo servico",
+          "cost": "1",
+          "description": "qual",
+          "id": "9e345288-b15c-4339-9c53-178d29dbbc76"
+        },
+        {
+          "name": "teste servico",
+          "cost": "1",
+          "description": "112e",
+          "id": "12ab6982-1fee-4fd0-977a-3cce6cc76500"
+        },
+        {
+          "name": "teste servico",
+          "cost": "1",
+          "description": "112e",
+          "id": "12ab6982-1fee-4fd0-977a-3cce6cc76500"
+        },
+        {
+          "name": "teste servico",
+          "cost": "1",
+          "description": "112e",
+          "id": "12ab6982-1fee-4fd0-977a-3cce6cc76500"
+        },
+        {
+          "name": "teste servico",
+          "cost": "1",
+          "description": "112e",
+          "id": "d7284775-d202-46b2-bd41-7c0b07db7a9c"
+        },
+        {
+          "name": "teste servico",
+          "cost": "1",
+          "description": "112e",
+          "id": "d7284775-d202-46b2-bd41-7c0b07db7a9c"
+        },
+        {
+          "name": "teste servico",
+          "cost": "1",
+          "description": "112e",
+          "id": "d7284775-d202-46b2-bd41-7c0b07db7a9c"
+        },
+        {
+          "name": "teste servico",
+          "cost": "1",
+          "description": "112e",
+          "id": "d7284775-d202-46b2-bd41-7c0b07db7a9c"
+        },
+        {
+          "name": "teste servico",
+          "cost": "1",
+          "description": "112e",
+          "id": "d7284775-d202-46b2-bd41-7c0b07db7a9c"
+        },
+        {
+          "name": "serviço de teste",
+          "cost": "66",
+          "description": "n",
+          "id": "7b57f902-0d70-4c64-bab2-203c61b57f1f"
+        },
+        {
+          "name": "serviço de teste",
+          "cost": "66",
+          "description": "n",
+          "id": "7b57f902-0d70-4c64-bab2-203c61b57f1f"
+        },
+        {
+          "name": "serviço de teste",
+          "cost": "66",
+          "description": "n",
+          "id": "8c193613-e775-4b22-8b0c-f7825b435ff7"
+        },
+        {
+          "name": "wwwq",
+          "cost": "11",
+          "description": "2",
+          "id": "78670703-9d67-437d-9862-738f0b794bf4"
+        }
+      ]
     },
     {
       "id": "7474",
